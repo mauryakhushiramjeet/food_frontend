@@ -1,0 +1,48 @@
+.containeri{
+    width: 100%;
+    border-bottom: 3px solid #0d7c66;
+    border-radius: 40px;
+    /* display: flex; */
+    /* border: 2px solid yellow; */
+    /* justify-content: space-between; */
+    /* background-color: #e5f0e8; */
+}
+/* .Add{
+    position: absolute;
+    margin-left: 20px ;
+    margin-right: 20px ;
+    padding: 8px;
+} */
+.Item-image{
+    /* height:10rem ;
+    width: 40rem; */
+    border-radius: 5px;
+    object-fit: cover;
+}
+.contant-doc{
+    /* border: 2px solid red; */
+    margin-left: 20px;
+}
+.Name{
+    font-weight: 700;
+    font-size: 20px;
+ 
+}
+.Description{
+    margin-top: 15px;
+}
+@media (max-width:900px) {
+    .Description{
+       font-size: 15px;
+    } 
+    .Item-image{
+        height:8rem ;
+        width: 30rem;
+        border-radius: 5px;
+    }
+    .containeri{
+       
+        padding: 20px;
+        /* background-color: #e5f0e8; */
+    }
+}

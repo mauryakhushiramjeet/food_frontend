@@ -1,0 +1,188 @@
+/* 
+.header{
+    display: flex;
+    justify-content:space-between;
+    border: 2px solid black;
+}
+
+ .logo{
+    width: 100px;
+ }
+ .nav-items{
+    padding: 0px 30px;
+ }
+ .nav-items>ul{
+    display: flex;
+   
+ }
+ .lihead{
+    padding:5px 15px;
+    margin: 10px;
+    font-size: 20px;
+    list-style: none;
+  color: black;
+  
+ }
+ 
+ .search{
+    padding: 10px;
+    
+ }
+ .search-button{
+   padding: 7px;
+   color: black;
+   background-color: rgb(194, 250, 194);
+   border: none;
+   outline: none;
+   font-size: 15px;
+ }
+ .res-card{
+    width: 250px;
+    cursor: pointer;
+    background-color: #f0f0f0; 
+    margin: 5px 20px;
+ }
+ .res-card:hover{
+    border: 1px solid black;
+
+ }
+ .res-logo{
+    width:245px;
+    
+    padding: 3px;
+ }
+ .res-container{
+    display: flex;
+    flex-wrap: wrap;
+   margin: 5px 20px;
+  
+ }
+ .filter-btn{
+   margin: 10px;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   background-color:rgb(208, 247, 247);
+   color: black;
+ }
+ .login{
+   padding: 0 10px;
+   cursor: pointer;
+   font-weight: bold;
+   font-size: large;
+ }
+ .filter{
+   display: flex;
+ }
+ .search-btn{
+   outline: none;
+   border: 1.5px solid black;
+   padding: 5px;
+   width: 30rem;
+   background: transparent;
+   font-size: 15px;
+   
+ }
+ @media(max-width:676px){
+   .header{
+      width: 38rem;
+   }
+   .logo{
+      width: 80px;
+   }
+   .nav-items{
+      padding: 0px 20px;
+   }
+   .lihead{
+      padding:5px 10px;
+      margin: 0 11px;
+      font-size: 18px;
+      list-style: none;
+ }
+   }
+  
+ @media(max-width:652px) {
+   .res-container{
+    
+      margin: 2px 19px;
+   }
+   .res-logo{
+      width: 190px;
+      height: 200px;
+   }
+   .res-card{
+      width: 200px;
+      cursor: pointer;
+      background-color: #f0f0f0; 
+      margin: 2px 19px;
+      
+   }
+ }
+ @media(max-width:638px){
+   .header{
+      width: 35rem;
+   }
+   
+ }
+ @media(max-width:590px){
+   .header{
+      width: 31rem;
+   }
+   .logo{
+      width: 80px;
+   }
+.nav-items{
+      padding: 0px 20px;
+   }
+   .lihead{
+      padding:5px 5px;
+      margin: 0 6px;
+      font-size: 15px;
+      list-style: none;
+ }
+ .login{
+   padding:  0 3px;
+ }
+ }
+ @media(max-width:590px){
+   .header{
+      width:    28rem;
+   }
+   .res-container{
+      justify-content: center;
+   }
+}
+@media(max-width:475px){
+   .header{
+      width: 24rem;
+   }
+   .res-container{
+      justify-content: center;
+   }
+   .logo{
+      width: 40px;
+   }
+.nav-items{
+      padding: 0px 10px;
+   }
+   .lihead{
+      padding:0px 2px;
+      margin: 0 2px;
+      font-size: 15px;
+      font-weight: bold;
+      list-style: none;
+ }
+ .login{
+   padding:  0 3px;
+   font-size: 13px;
+   margin-left: 3px;
+ }
+}
+  */
+  /* @tailwind base;
+@tailwind components;
+@tailwind utilities;  */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

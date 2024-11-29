@@ -1,0 +1,151 @@
+
+.image{
+width: 28rem;
+height: 25rem;
+border-radius: 15px;
+
+}
+.Image-container{
+    /* border: 2px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* height: 100%; */
+
+}
+.content{
+    padding: 40px;
+    padding-left: 80px;
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.heading{
+    font-size: 90px;
+    color: white;
+    font-weight: 700;
+    line-height: 6rem;
+   
+}
+.small{
+    padding-left: 10px;
+    color: white;
+    margin-top: 30px;
+}
+.btni{
+    padding: 15px;
+font-size: larger;
+    color: #229f86;
+font-weight: 500;  
+  background: white;
+    width: 150px;
+    margin-top: 20px;
+    /* margin-left: 100px; */
+    border-radius: 25px;
+    
+}
+.btni:hover{
+    box-shadow: 10px 10px 100px  white;
+}
+
+@media (max-width:1170px) {
+    .heading{
+        font-size: 70px;
+        color: white;
+        font-weight: 700;
+        line-height: 5rem;
+       
+    }
+    .image{
+        width: 25rem;
+        height: 22rem;
+        border-radius: 15px;
+        
+        }
+}
+@media (max-width:970px) {
+    .content{
+        padding-left: 40px;
+
+    }
+    .heading{
+        font-size: 60px;
+        color: white;
+        font-weight: 700;
+        line-height: 4rem;
+       
+    }
+    .image{
+        width: 20rem;
+        height: 20rem;
+        border-radius: 15px;
+        
+        }
+        .btni{
+            padding: 10px;
+       
+
+        }
+}
+@media (max-width:800px) {
+    .main{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    .content{
+        width: 70%;
+        box-shadow: 2px 2px 10px white;
+    }
+    .Image-container{
+        width: 70%;
+    }
+}
+@media (max-width:650px) {
+    .heading{
+        font-size: 50px;
+        color: white;
+        font-weight: 600;
+        line-height: 3rem;
+       
+    }
+    .content{
+        padding: 20px;
+    }
+}
+@media (max-width:500px) {
+   
+    .content{
+        width:100%;
+    }
+    .Image-container{
+        width: 100%;
+    }
+}
+@media (max-width:350px) {
+    .heading{
+        font-size: 40px;
+        color: white;
+        font-weight: 600;
+        line-height: 2.5rem;
+       
+    }
+    .small{
+       font-size: 13px;
+    }
+    .btni{
+        padding: 10px;
+    font-size: medium;
+        width: 120px;
+       
+    }
+    .image{
+        width: 17rem;
+        height: 17rem;
+        border-radius: 15px;
+        
+        }
+}
