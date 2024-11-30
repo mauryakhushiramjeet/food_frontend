@@ -1,25 +1,69 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { backendUrl } from "../App.js";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [isSignUp, setIsSignUp] = useState(true); // Default to SignUp mode
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+  
+  const data = {
+    email,
+    password,
+    name,
+  };
+  const loginData = {
+    email,
+    password,
+  };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    // console.log(backendUrl,"hgjh")
     e.preventDefault();
-    if (isSignUp) {
-      console.log("SignUp Data:", { name, email, password });
-      // Call signup API here
-    } else {
-      console.log("Login Data:", { email, password });
-      // Call login API here
+    console.log("button clicked");
+    try {
+      if (isSignUp) {
+        const response = await fetch(backendUrl + "/api/user/signup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+        const json = await response.json();
+
+        console.log(json);
+        setMessage(json.message);
+            toast.success("mbvjhjvhv");
+            if(json.success){
+ navigate("/body");
+            }
+       
+      } else {
+        const response = await fetch(backendUrl + "/api/user/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(loginData),
+        });
+        const json = await response.json();
+        console.log(json);
+        toast(json.message);
+        navigate("/body");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
     }
   };
 
   return (
-    <div className="w-[100vw] h-[80vh] flex justify-center items-center">
-      <div className="bg-white p-8 rounded-lg shadow-2xl w-full max-w-sm">
+    <div className="w-full h-screen flex justify-center items-center bg-gray-50">
+      <div className="bg-white p-8 rounded-lg shadow-2xl w-full sm:w-[95%] md:w-[80%] lg:w-[40%] max-w-md">
         <h2 className="text-3xl font-semibold text-center text-[#0d7c66] mb-6">
           {isSignUp ? "Sign Up" : "Log In"}
         </h2>
@@ -35,7 +79,7 @@ function Login() {
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Enter your name"
                 required
-                className="w-full p-2 border rounded-lg text-black focus:outline-none focus:border-blue-500"
+                className="w-full p-2 text-sm sm:text-base md:text-sm border rounded-lg text-black focus:outline-none focus:border-blue-500"
               />
             </div>
           )}
@@ -49,8 +93,10 @@ function Login() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               required
-              className="w-full p-2 border rounded-lg text-black focus:outline-none focus:border-blue-500"
+              className="w-full p-2 text-sm sm:text-base md:text-sm border rounded-lg text-black focus:outline-none focus:border-blue-500"
             />
+            <p className="p-2 text-red-700 md:text-sm">{message}</p>
+            {/* {console.log(message)} */}
           </div>
           <div className="mb-6">
             <label className="block text-gray-700 text-sm font-bold mb-2">
@@ -62,7 +108,7 @@ function Login() {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
               required
-              className="w-full p-2 border rounded-lg text-black focus:outline-none focus:border-blue-500"
+              className="w-full p-2 text-sm sm:text-base md:text-sm border rounded-lg text-black focus:outline-none focus:border-blue-500"
             />
           </div>
           <button

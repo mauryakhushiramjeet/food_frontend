@@ -12,7 +12,17 @@ import appStore from "./Utill/appStore";
 import Cart from './Component/Cart';
 import Footer from "./Component/Footer";
 import Login from "./Component/Login";
+import { ToastContainer } from "react-toastify";
+export const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
+// import { ToastContainer, toast, cssTransition } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+
+// const slideRightToLeft = cssTransition({
+//   enter: "slide-enter",
+//   exit: "slide-exit",
+//   duration: [5000, 500], // Animation durations (enter and exit)
+// });
 const App = () => {
   const [UserName, setUserName] = useState();
   useState(() => {
@@ -25,6 +35,19 @@ const App = () => {
     <Provider store={appStore}>
       <UserContex.Provider value={{ logdenUser: UserName, setUserName }}>
         <div className="app">
+          <ToastContainer
+            // position="top-right"
+            // autoClose={3000}
+            // hideProgressBar={true}
+            // closeOnClick
+            // pauseOnHover
+            // draggable
+            // toastStyle={{
+            //   fontSize: "12px",
+            //   padding: "8px",
+            //   maxWidth: "20px",
+            // }}
+          />
           <Header />
           <Outlet />
           <Footer />
@@ -44,7 +67,7 @@ export const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Body />,
+        element: <Login />,
       },
       {
         path: "/about",
@@ -55,6 +78,10 @@ export const appRouter = createBrowserRouter([
         ),
       },
       {
+        path: "/body",
+        element: <Body />,
+      },
+      {
         path: "/contact",
         element: (
           <Suspense fallback={<h1>Loading.....</h1>}>
@@ -63,17 +90,12 @@ export const appRouter = createBrowserRouter([
         ),
       },
       {
-        path : "/cartpage",
-        element : <Cart />
+        path: "/cartpage",
+        element: <Cart />,
       },
       {
         path: "/restaurent/:resId",
         element: <RestaurentMenu />,
-      },
-
-      {
-        path: "/login",
-        element: <Login />,
       },
     ],
     errorElement: <Error />,
