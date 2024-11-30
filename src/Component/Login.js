@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { backendUrl } from "../App.js";
+import { useDispatch } from "react-redux";
+import { setLoninTrue } from "../Utill/LoginSlice.js";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [isSignUp, setIsSignUp] = useState(true); // Default to SignUp mode
+  const [isSignUp, setIsSignUp] = useState(false); // Default to SignUp mode
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  
+  const dispatch = useDispatch();
   const data = {
     email,
     password,
@@ -36,12 +38,10 @@ function Login() {
         const json = await response.json();
 
         console.log(json);
-        setMessage(json.message);
-            toast.success("mbvjhjvhv");
-            if(json.success){
- navigate("/body");
-            }
-       
+        setMessage(json);
+        if (json.success) {
+          setIsSignUp(false);
+        }
       } else {
         const response = await fetch(backendUrl + "/api/user/login", {
           method: "POST",
@@ -52,12 +52,18 @@ function Login() {
         });
         const json = await response.json();
         console.log(json);
-        toast(json.message);
-        navigate("/body");
+
+        setMessage(json);
+        if (json.success) {
+          dispatch(setLoninTrue());
+
+          // toast.success(json.message);
+          navigate("/body");
+        }
       }
     } catch (error) {
       console.log(error);
-      toast.error(error.message);
+      // toast.error(error.message);
     }
   };
 
@@ -81,6 +87,9 @@ function Login() {
                 required
                 className="w-full p-2 text-sm sm:text-base md:text-sm border rounded-lg text-black focus:outline-none focus:border-blue-500"
               />
+              <p className="p-2 text-red-700 md:text-sm">
+                {message.messagefiled}
+              </p>
             </div>
           )}
           <div className="mb-4">
@@ -95,7 +104,9 @@ function Login() {
               required
               className="w-full p-2 text-sm sm:text-base md:text-sm border rounded-lg text-black focus:outline-none focus:border-blue-500"
             />
-            <p className="p-2 text-red-700 md:text-sm">{message}</p>
+            <p className="p-2 text-red-700 md:text-sm">
+              {message.messageEmail}
+            </p>
             {/* {console.log(message)} */}
           </div>
           <div className="mb-6">
@@ -110,6 +121,10 @@ function Login() {
               required
               className="w-full p-2 text-sm sm:text-base md:text-sm border rounded-lg text-black focus:outline-none focus:border-blue-500"
             />
+            <p className="p-2 text-red-700 md:text-sm">
+              {message.messagePassword}
+            </p>
+            {console.log(message.messagePassword)}
           </div>
           <button
             type="submit"

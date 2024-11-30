@@ -7,9 +7,9 @@ import Error from "./Component/Error";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import RestaurentMenu from "./Component/RestaurentMenu";
 import UserContex from "./Component/UserContex";
-import { Provider } from "react-redux";
+import { Provider, useSelector } from "react-redux";
 import appStore from "./Utill/appStore";
-import Cart from './Component/Cart';
+import Cart from "./Component/Cart";
 import Footer from "./Component/Footer";
 import Login from "./Component/Login";
 import { ToastContainer } from "react-toastify";
@@ -24,6 +24,8 @@ export const backendUrl = process.env.REACT_APP_BACKEND_URL;
 //   duration: [5000, 500], // Animation durations (enter and exit)
 // });
 const App = () => {
+  const isLongIn = useSelector((store) => store.login.isLogin);
+
   const [UserName, setUserName] = useState();
   useState(() => {
     const data = {
@@ -32,28 +34,25 @@ const App = () => {
     setUserName(data.name);
   }, []);
   return (
-    <Provider store={appStore}>
-      <UserContex.Provider value={{ logdenUser: UserName, setUserName }}>
-        <div className="app">
-          <ToastContainer
-            // position="top-right"
-            // autoClose={3000}
-            // hideProgressBar={true}
-            // closeOnClick
-            // pauseOnHover
-            // draggable
-            // toastStyle={{
-            //   fontSize: "12px",
-            //   padding: "8px",
-            //   maxWidth: "20px",
-            // }}
-          />
-          <Header />
-          <Outlet />
-          <Footer />
-        </div>
-      </UserContex.Provider>
-    </Provider>
+    <div className="app">
+      <ToastContainer
+      // position="top-right"
+      // autoClose={3000}
+      // hideProgressBar={true}
+      // closeOnClick
+      // pauseOnHover
+      // draggable
+      // toastStyle={{
+      //   fontSize: "12px",
+      //   padding: "8px",
+      //   maxWidth: "20px",
+      // }}
+      />
+      <Header />
+
+      <Outlet />
+      <Footer />
+    </div>
   );
 };
 const About = lazy(() => import("./Component/About"));
@@ -63,12 +62,13 @@ const About = lazy(() => import("./Component/About"));
 export const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <Login />,
     children: [
       {
         path: "/",
         element: <Login />,
       },
+
       {
         path: "/about",
         element: (
