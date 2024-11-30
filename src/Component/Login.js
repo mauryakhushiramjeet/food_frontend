@@ -55,10 +55,11 @@ function Login() {
 
         setMessage(json);
         if (json.success) {
+                    navigate("/body");
+
           dispatch(setLoninTrue());
 
           // toast.success(json.message);
-          navigate("/body");
         }
       }
     } catch (error) {

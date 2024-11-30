@@ -66,39 +66,44 @@ export const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Login />,
-      },
-
-      {
-        path: "/about",
-        element: (
-          <Suspense fallback={<h1>Loading.....</h1>}>
-            <About />
-          </Suspense>
-        ),
-      },
-      {
-        path: "/body",
-        element: <Body />,
-      },
-      {
-        path: "/contact",
-        element: (
-          <Suspense fallback={<h1>Loading.....</h1>}>
-            <Contact />
-          </Suspense>
-        ),
-      },
-      {
-        path: "/cartpage",
-        element: <Cart />,
-      },
-      {
-        path: "/restaurent/:resId",
-        element: <RestaurentMenu />,
+        element: <App />,
+        children: [
+          {
+            path: "/about",
+            element: (
+              <Suspense fallback={<h1>Loading.....</h1>}>
+                <About />
+              </Suspense>
+            ),
+          },
+          {
+            path: "/body",
+            element: <Body />,
+          },
+          {
+            path: "/contact",
+            element: (
+              <Suspense fallback={<h1>Loading.....</h1>}>
+                <Contact />
+              </Suspense>
+            ),
+          },
+          {
+            path: "/cartpage",
+            element: <Cart />,
+          },
+          {
+            path: "/restaurent/:resId",
+            element: <RestaurentMenu />,
+          },
+        ],
       },
     ],
     errorElement: <Error />,
+  },
+  {
+    path: "/app",
+    element: <App />,
   },
 ]);
 
